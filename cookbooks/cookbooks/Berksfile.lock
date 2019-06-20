@@ -1,0 +1,7 @@
+DEPENDENCIES
+  monit
+    path: .
+    metadata: true
+
+GRAPH
+  monit (0.7.1)

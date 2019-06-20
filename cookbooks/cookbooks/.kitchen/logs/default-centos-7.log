@@ -1,0 +1,239 @@
+I, [2019-04-15T12:57:54.200980 #86113]  INFO -- default-centos-7: -----> Cleaning up any prior instances of <default-centos-7>
+I, [2019-04-15T12:57:54.201621 #86113]  INFO -- default-centos-7: -----> Destroying <default-centos-7>...
+I, [2019-04-15T12:57:54.203132 #86113]  INFO -- default-centos-7: Finished destroying <default-centos-7> (0m0.00s).
+I, [2019-04-15T12:57:54.203863 #86113]  INFO -- default-centos-7: -----> Testing <default-centos-7>
+I, [2019-04-15T12:57:54.204226 #86113]  INFO -- default-centos-7: -----> Creating <default-centos-7>...
+I, [2019-04-15T12:57:54.366407 #86113]  INFO -- default-centos-7: Sending build context to Docker daemon  179.2kB
+I, [2019-04-15T12:57:54.559636 #86113]  INFO -- default-centos-7: Step 1/17 : FROM centos:centos7
+I, [2019-04-15T12:57:54.561575 #86113]  INFO -- default-centos-7:  ---> 1e1148e4cc2c
+I, [2019-04-15T12:57:54.563477 #86113]  INFO -- default-centos-7: Step 2/17 : ENV container docker
+I, [2019-04-15T12:57:54.572848 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.573837 #86113]  INFO -- default-centos-7:  ---> 3ed48f2df519
+I, [2019-04-15T12:57:54.574415 #86113]  INFO -- default-centos-7: Step 3/17 : RUN yum clean all
+I, [2019-04-15T12:57:54.577272 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.577391 #86113]  INFO -- default-centos-7:  ---> b8fe546d07ba
+I, [2019-04-15T12:57:54.577473 #86113]  INFO -- default-centos-7: Step 4/17 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2019-04-15T12:57:54.579303 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.579410 #86113]  INFO -- default-centos-7:  ---> 4239f70fe97c
+I, [2019-04-15T12:57:54.579485 #86113]  INFO -- default-centos-7: Step 5/17 : RUN [ -f "/etc/ssh/ssh_host_rsa_key" ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+I, [2019-04-15T12:57:54.581283 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.581405 #86113]  INFO -- default-centos-7:  ---> ef31d11adff1
+I, [2019-04-15T12:57:54.581484 #86113]  INFO -- default-centos-7: Step 6/17 : RUN [ -f "/etc/ssh/ssh_host_dsa_key" ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+I, [2019-04-15T12:57:54.583533 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.583810 #86113]  INFO -- default-centos-7:  ---> 4edff1d3c161
+I, [2019-04-15T12:57:54.583889 #86113]  INFO -- default-centos-7: Step 7/17 : RUN if ! getent passwd kitchen; then                 useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;               fi
+I, [2019-04-15T12:57:54.586760 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.586875 #86113]  INFO -- default-centos-7:  ---> 716b36aad46c
+I, [2019-04-15T12:57:54.586945 #86113]  INFO -- default-centos-7: Step 8/17 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+I, [2019-04-15T12:57:54.594689 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.594797 #86113]  INFO -- default-centos-7:  ---> 782e4c28d068
+I, [2019-04-15T12:57:54.594865 #86113]  INFO -- default-centos-7: Step 9/17 : RUN echo "Defaults !requiretty" >> /etc/sudoers
+I, [2019-04-15T12:57:54.599092 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.599260 #86113]  INFO -- default-centos-7:  ---> 5b8d3084bb00
+I, [2019-04-15T12:57:54.599321 #86113]  INFO -- default-centos-7: Step 10/17 : RUN mkdir -p /home/kitchen/.ssh
+I, [2019-04-15T12:57:54.605790 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.607339 #86113]  INFO -- default-centos-7:  ---> 93308de3a93d
+I, [2019-04-15T12:57:54.607499 #86113]  INFO -- default-centos-7: Step 11/17 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2019-04-15T12:57:54.612831 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.612930 #86113]  INFO -- default-centos-7:  ---> 511ffdd8ef4c
+I, [2019-04-15T12:57:54.613222 #86113]  INFO -- default-centos-7: Step 12/17 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2019-04-15T12:57:54.617152 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.617308 #86113]  INFO -- default-centos-7:  ---> 5c2f335c288d
+I, [2019-04-15T12:57:54.617366 #86113]  INFO -- default-centos-7: Step 13/17 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T12:57:54.621993 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.622220 #86113]  INFO -- default-centos-7:  ---> c42874761809
+I, [2019-04-15T12:57:54.622270 #86113]  INFO -- default-centos-7: Step 14/17 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T12:57:54.625396 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.625486 #86113]  INFO -- default-centos-7:  ---> cb3607415209
+I, [2019-04-15T12:57:54.625533 #86113]  INFO -- default-centos-7: Step 15/17 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T12:57:54.628516 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.628641 #86113]  INFO -- default-centos-7:  ---> 79e3a9740e18
+I, [2019-04-15T12:57:54.628695 #86113]  INFO -- default-centos-7: Step 16/17 : RUN systemctl enable sshd.service
+I, [2019-04-15T12:57:54.634650 #86113]  INFO -- default-centos-7:  ---> Using cache
+I, [2019-04-15T12:57:54.634752 #86113]  INFO -- default-centos-7:  ---> 487d5d481d97
+I, [2019-04-15T12:57:54.634805 #86113]  INFO -- default-centos-7: Step 17/17 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQDxrNUN5iifZsr9LJlmOC5zP\+NzZuzPArlXOE4pZM61/oZF78PzOEiWi1u9uO\+jqsf\+5bk61Ns8PYV3mq4Qnc9sr27DQaWGlxF/gGj\+LJpyPoUXc7U4TZux8O/YxkT4KDyrL1P/UeP2Ru1lxp\+UOJg5bBaSZnTFZgarZbxpY6FnykDOpVQ\+M4WW6v7tmwXXbT4f3Wr4zA9oC6x6VDKb0\+xkFdT4ju3nT3Kjnqns/7XkS8uqFLOQDNsIEtF438hz2Js3EMFRAInhYF0yIpgRl9LMFs4CSCdVPTYRquBE7jfbpSuOcMRJk\+hfGi38PfttUG057Tr7nTdYKn28TXWSpzSl\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T12:57:54.807665 #86113]  INFO -- default-centos-7:  ---> Running in a0205aec97a0
+I, [2019-04-15T12:57:56.356458 #86113]  INFO -- default-centos-7: Removing intermediate container a0205aec97a0
+I, [2019-04-15T12:57:56.356713 #86113]  INFO -- default-centos-7:  ---> 760dc0dd0915
+I, [2019-04-15T12:57:56.360421 #86113]  INFO -- default-centos-7: Successfully built 760dc0dd0915
+I, [2019-04-15T12:57:56.595282 #86113]  INFO -- default-centos-7: de250440d8387557212b9253baa33ac718bb8688c42df22e9f7e0cbb8b754fa8
+I, [2019-04-15T12:57:57.419946 #86113]  INFO -- default-centos-7: 0.0.0.0:32772
+I, [2019-04-15T12:57:57.440684 #86113]  INFO -- default-centos-7: Waiting for SSH service on localhost:32772, retrying in 3 seconds
+I, [2019-04-15T12:58:00.775857 #86113]  INFO -- default-centos-7: [SSH] Established
+I, [2019-04-15T12:58:00.778269 #86113]  INFO -- default-centos-7: Finished creating <default-centos-7> (0m6.57s).
+I, [2019-04-15T12:58:00.778611 #86113]  INFO -- default-centos-7: -----> Converging <default-centos-7>...
+I, [2019-04-15T12:58:00.779935 #86113]  INFO -- default-centos-7: Preparing files for transfer
+I, [2019-04-15T12:58:00.780143 #86113]  INFO -- default-centos-7: Preparing dna.json
+I, [2019-04-15T12:58:00.780924 #86113]  INFO -- default-centos-7: Resolving cookbook dependencies with Berkshelf 7.0.6...
+I, [2019-04-15T12:58:03.911313 #86113]  INFO -- default-centos-7: Removing non-cookbook files before transfer
+I, [2019-04-15T12:58:03.919943 #86113]  INFO -- default-centos-7: Preparing validation.pem
+I, [2019-04-15T12:58:03.920901 #86113]  INFO -- default-centos-7: Preparing client.rb
+I, [2019-04-15T12:58:04.144254 #86113]  INFO -- default-centos-7: -----> Installing Chef Omnibus (install only if missing)
+I, [2019-04-15T12:58:04.150614 #86113]  INFO -- default-centos-7: Downloading https://omnitruck.chef.io/install.sh to file /tmp/install.sh
+I, [2019-04-15T12:58:04.150703 #86113]  INFO -- default-centos-7: Trying curl...
+I, [2019-04-15T12:58:04.816727 #86113]  INFO -- default-centos-7: Download complete.
+I, [2019-04-15T12:58:04.865281 #86113]  INFO -- default-centos-7: el 7 x86_64
+I, [2019-04-15T12:58:04.866570 #86113]  INFO -- default-centos-7: Getting information for chef stable  for el...
+I, [2019-04-15T12:58:04.867199 #86113]  INFO -- default-centos-7: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=el&pv=7&m=x86_64
+I, [2019-04-15T12:58:04.867322 #86113]  INFO -- default-centos-7:   to file /tmp/install.sh.1382/metadata.txt
+I, [2019-04-15T12:58:04.870447 #86113]  INFO -- default-centos-7: trying curl...
+I, [2019-04-15T12:58:05.516739 #86113]  INFO -- default-centos-7: sha1	8861da401e22eec58fe1565b314968fff73e03a9
+I, [2019-04-15T12:58:05.516829 #86113]  INFO -- default-centos-7: sha256	633f211df89e1483341afb35230a29589e1a51e0f5f91fea5594a90d734a8c78
+I, [2019-04-15T12:58:05.516874 #86113]  INFO -- default-centos-7: url	https://packages.chef.io/files/stable/chef/14.11.21/el/7/chef-14.11.21-1.el7.x86_64.rpm
+I, [2019-04-15T12:58:05.517096 #86113]  INFO -- default-centos-7: version	14.11.21
+I, [2019-04-15T12:58:05.522501 #86113]  INFO -- default-centos-7: downloaded metadata file looks valid...
+I, [2019-04-15T12:58:05.546548 #86113]  INFO -- default-centos-7: downloading https://packages.chef.io/files/stable/chef/14.11.21/el/7/chef-14.11.21-1.el7.x86_64.rpm
+I, [2019-04-15T12:58:05.546650 #86113]  INFO -- default-centos-7:   to file /tmp/install.sh.1382/chef-14.11.21-1.el7.x86_64.rpm
+I, [2019-04-15T12:58:05.547666 #86113]  INFO -- default-centos-7: trying curl...
+I, [2019-04-15T12:58:22.208834 #86113]  INFO -- default-centos-7: Comparing checksum with sha256sum...
+I, [2019-04-15T12:58:22.314772 #86113]  INFO -- default-centos-7: 
+I, [2019-04-15T12:58:22.315052 #86113]  INFO -- default-centos-7: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2019-04-15T12:58:22.315724 #86113]  INFO -- default-centos-7: 
+I, [2019-04-15T12:58:22.315871 #86113]  INFO -- default-centos-7: You are installing an omnibus package without a version pin.  If you are installing
+I, [2019-04-15T12:58:22.316409 #86113]  INFO -- default-centos-7: on production servers via an automated process this is DANGEROUS and you will
+I, [2019-04-15T12:58:22.316587 #86113]  INFO -- default-centos-7: be upgraded without warning on new releases, even to new major releases.
+I, [2019-04-15T12:58:22.316986 #86113]  INFO -- default-centos-7: Letting the version float is only appropriate in desktop, test, development or
+I, [2019-04-15T12:58:22.317277 #86113]  INFO -- default-centos-7: CI/CD environments.
+I, [2019-04-15T12:58:22.317363 #86113]  INFO -- default-centos-7: 
+I, [2019-04-15T12:58:22.317611 #86113]  INFO -- default-centos-7: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2019-04-15T12:58:22.317667 #86113]  INFO -- default-centos-7: 
+I, [2019-04-15T12:58:22.317893 #86113]  INFO -- default-centos-7: Installing chef 
+I, [2019-04-15T12:58:22.317978 #86113]  INFO -- default-centos-7: installing with rpm...
+I, [2019-04-15T12:58:22.395425 #86113]  INFO -- default-centos-7: warning: /tmp/install.sh.1382/chef-14.11.21-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+I, [2019-04-15T12:58:22.944675 #86113]  INFO -- default-centos-7: Preparing...                                                            (100%)#                                 (100%)##                                (100%)###                               (100%)####                              (100%)#####                             (100%)######                            (100%)#######                           (100%)########                          (100%)#########                         (100%)##########                        (100%)###########                       (100%)############                      (100%)#############                     (100%)##############                    (100%)###############                   (100%)################                  (100%)#################                 (100%)##################                (100%)###################               (100%)####################              (100%)#####################             (100%)######################            (100%)#######################           (100%)########################          (100%)#########################         (100%)##########################        (100%)###########################       (100%)############################      (100%)#############################     (100%)##############################    (100%)###############################   (100%)################################  (100%)################################# (100%)################################# [100%]
+I, [2019-04-15T12:58:22.965010 #86113]  INFO -- default-centos-7: Updating / installing...
+I, [2019-04-15T12:58:30.424301 #86113]  INFO -- default-centos-7:    1:chef-14.11.21-1.el7                                                (  1%)#                                 (  4%)##                                (  7%)###                               ( 10%)####                              ( 13%)#####                             ( 16%)######                            ( 19%)#######                           ( 22%)########                          ( 25%)#########                         ( 28%)##########                        ( 31%)###########                       ( 34%)############                      ( 37%)#############                     ( 40%)##############                    ( 43%)###############                   ( 46%)################                  ( 49%)#################                 ( 51%)##################                ( 54%)###################               ( 57%)####################              ( 60%)#####################             ( 63%)######################            ( 66%)#######################           ( 69%)########################          ( 72%)#########################         ( 75%)##########################        ( 78%)###########################       ( 81%)############################      ( 84%)#############################     ( 87%)##############################    ( 90%)###############################   ( 93%)################################  ( 96%)################################# ( 99%)################################# [100%]
+I, [2019-04-15T12:58:32.092839 #86113]  INFO -- default-centos-7: Thank you for installing Chef!
+I, [2019-04-15T12:58:32.191183 #86113]  INFO -- default-centos-7: Transferring files to <default-centos-7>
+I, [2019-04-15T12:58:34.484078 #86113]  INFO -- default-centos-7: Starting Chef Client, version 14.11.21
+I, [2019-04-15T12:58:35.188962 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:35+00:00] WARN: Plugin Network: unable to detect ipaddress
+I, [2019-04-15T12:58:35.933858 #86113]  INFO -- default-centos-7: Creating a new client identity for default-centos-7 using the validator key.
+I, [2019-04-15T12:58:36.164745 #86113]  INFO -- default-centos-7: resolving cookbooks for run list: ["monit::default"]
+I, [2019-04-15T12:58:36.234193 #86113]  INFO -- default-centos-7: Synchronizing Cookbooks:
+I, [2019-04-15T12:58:36.318926 #86113]  INFO -- default-centos-7:   - monit (0.7.1)
+I, [2019-04-15T12:58:36.324115 #86113]  INFO -- default-centos-7: Installing Cookbook Gems:
+I, [2019-04-15T12:58:36.325863 #86113]  INFO -- default-centos-7: Compiling Cookbooks...
+I, [2019-04-15T12:58:36.332350 #86113]  INFO -- default-centos-7: Converging 4 resources
+I, [2019-04-15T12:58:36.333231 #86113]  INFO -- default-centos-7: Recipe: monit::default
+I, [2019-04-15T12:58:44.784850 #86113]  INFO -- default-centos-7:   * yum_package[monit] action install
+I, [2019-04-15T12:58:44.787677 #86113]  INFO -- default-centos-7:     * No candidate version available for monit
+I, [2019-04-15T12:58:44.788730 #86113]  INFO -- default-centos-7:     ================================================================================
+I, [2019-04-15T12:58:44.790443 #86113]  INFO -- default-centos-7:     Error executing action `install` on resource 'yum_package[monit]'
+I, [2019-04-15T12:58:44.790644 #86113]  INFO -- default-centos-7:     ================================================================================
+I, [2019-04-15T12:58:44.790934 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.791026 #86113]  INFO -- default-centos-7:     Chef::Exceptions::Package
+I, [2019-04-15T12:58:44.791082 #86113]  INFO -- default-centos-7:     -------------------------
+I, [2019-04-15T12:58:44.791167 #86113]  INFO -- default-centos-7:     No candidate version available for monit
+I, [2019-04-15T12:58:44.791222 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.791287 #86113]  INFO -- default-centos-7:     Resource Declaration:
+I, [2019-04-15T12:58:44.791343 #86113]  INFO -- default-centos-7:     ---------------------
+I, [2019-04-15T12:58:44.791453 #86113]  INFO -- default-centos-7:     # In /tmp/kitchen/cache/cookbooks/monit/recipes/default.rb
+I, [2019-04-15T12:58:44.791510 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.791558 #86113]  INFO -- default-centos-7:       1: package "monit"
+I, [2019-04-15T12:58:44.791602 #86113]  INFO -- default-centos-7:       2: 
+I, [2019-04-15T12:58:44.791646 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.791690 #86113]  INFO -- default-centos-7:     Compiled Resource:
+I, [2019-04-15T12:58:44.791732 #86113]  INFO -- default-centos-7:     ------------------
+I, [2019-04-15T12:58:44.791776 #86113]  INFO -- default-centos-7:     # Declared in /tmp/kitchen/cache/cookbooks/monit/recipes/default.rb:1:in `from_file'
+I, [2019-04-15T12:58:44.791821 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.813507 #86113]  INFO -- default-centos-7:     yum_package("monit") do
+I, [2019-04-15T12:58:44.813616 #86113]  INFO -- default-centos-7:       package_name "monit"
+I, [2019-04-15T12:58:44.813697 #86113]  INFO -- default-centos-7:       action [:install]
+I, [2019-04-15T12:58:44.813740 #86113]  INFO -- default-centos-7:       default_guard_interpreter :default
+I, [2019-04-15T12:58:44.813781 #86113]  INFO -- default-centos-7:       declared_type :package
+I, [2019-04-15T12:58:44.813862 #86113]  INFO -- default-centos-7:       cookbook_name "monit"
+I, [2019-04-15T12:58:44.813905 #86113]  INFO -- default-centos-7:       recipe_name "default"
+I, [2019-04-15T12:58:44.813943 #86113]  INFO -- default-centos-7:     end
+I, [2019-04-15T12:58:44.813979 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.814452 #86113]  INFO -- default-centos-7:     System Info:
+I, [2019-04-15T12:58:44.814548 #86113]  INFO -- default-centos-7:     ------------
+I, [2019-04-15T12:58:44.814596 #86113]  INFO -- default-centos-7:     chef_version=14.11.21
+I, [2019-04-15T12:58:44.814635 #86113]  INFO -- default-centos-7:     platform=centos
+I, [2019-04-15T12:58:44.814671 #86113]  INFO -- default-centos-7:     platform_version=7.6.1810
+I, [2019-04-15T12:58:44.814708 #86113]  INFO -- default-centos-7:     ruby=ruby 2.5.3p105 (2018-10-18 revision 65156) [x86_64-linux]
+I, [2019-04-15T12:58:44.814784 #86113]  INFO -- default-centos-7:     program_name=/opt/chef/bin/chef-client
+I, [2019-04-15T12:58:44.814823 #86113]  INFO -- default-centos-7:     executable=/opt/chef/bin/chef-client
+I, [2019-04-15T12:58:44.814858 #86113]  INFO -- default-centos-7:     
+I, [2019-04-15T12:58:44.815290 #86113]  INFO -- default-centos-7: 
+I, [2019-04-15T12:58:44.815356 #86113]  INFO -- default-centos-7: Running handlers:
+I, [2019-04-15T12:58:44.815570 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:44+00:00] ERROR: Running exception handlers
+I, [2019-04-15T12:58:44.815619 #86113]  INFO -- default-centos-7: Running handlers complete
+I, [2019-04-15T12:58:44.815659 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:44+00:00] ERROR: Exception handlers complete
+I, [2019-04-15T12:58:44.815859 #86113]  INFO -- default-centos-7: Chef Client failed. 0 resources updated in 10 seconds
+I, [2019-04-15T12:58:44.816016 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:44+00:00] FATAL: Stacktrace dumped to /tmp/kitchen/cache/chef-stacktrace.out
+I, [2019-04-15T12:58:44.816064 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:44+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+I, [2019-04-15T12:58:44.816104 #86113]  INFO -- default-centos-7: [2019-04-15T17:58:44+00:00] FATAL: Chef::Exceptions::Package: yum_package[monit] (monit::default line 1) had an error: Chef::Exceptions::Package: No candidate version available for monit
+E, [2019-04-15T12:58:44.852694 #86113] ERROR -- default-centos-7: Converge failed on instance <default-centos-7>.
+E, [2019-04-15T12:58:44.852886 #86113] ERROR -- default-centos-7: ------Exception-------
+E, [2019-04-15T12:58:44.852936 #86113] ERROR -- default-centos-7: Class: Kitchen::ActionFailed
+E, [2019-04-15T12:58:44.852975 #86113] ERROR -- default-centos-7: Message: SSH exited (1) for command: [sh -c '
+TEST_KITCHEN="1"; export TEST_KITCHEN
+sudo -E /opt/chef/bin/chef-client --local-mode --config /tmp/kitchen/client.rb --log_level auto --force-formatter --no-color --json-attributes /tmp/kitchen/dna.json --chef-zero-port 8889 
+']
+E, [2019-04-15T12:58:44.853010 #86113] ERROR -- default-centos-7: ----------------------
+E, [2019-04-15T12:58:44.853042 #86113] ERROR -- default-centos-7: ------Backtrace-------
+E, [2019-04-15T12:58:44.853073 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/provisioner/base.rb:91:in `rescue in call'
+E, [2019-04-15T12:58:44.853106 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/provisioner/base.rb:67:in `call'
+E, [2019-04-15T12:58:44.853139 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:408:in `block in converge_action'
+E, [2019-04-15T12:58:44.853201 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-04-15T12:58:44.853234 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-04-15T12:58:44.853266 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-04-15T12:58:44.853297 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:512:in `action'
+E, [2019-04-15T12:58:44.853328 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:404:in `converge_action'
+E, [2019-04-15T12:58:44.853360 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-04-15T12:58:44.853391 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-04-15T12:58:44.853422 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-04-15T12:58:44.853453 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:380:in `each'
+E, [2019-04-15T12:58:44.853484 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-04-15T12:58:44.853514 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:162:in `verify'
+E, [2019-04-15T12:58:44.853546 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:191:in `block in test'
+E, [2019-04-15T12:58:44.853577 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-04-15T12:58:44.853608 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:187:in `test'
+E, [2019-04-15T12:58:44.853638 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-04-15T12:58:44.853669 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-04-15T12:58:44.853700 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-04-15T12:58:44.853731 #86113] ERROR -- default-centos-7: ----End Backtrace-----
+E, [2019-04-15T12:58:44.853760 #86113] ERROR -- default-centos-7: ---Nested Exception---
+E, [2019-04-15T12:58:44.853789 #86113] ERROR -- default-centos-7: Class: Kitchen::Transport::SshFailed
+E, [2019-04-15T12:58:44.853819 #86113] ERROR -- default-centos-7: Message: SSH exited (1) for command: [sh -c '
+TEST_KITCHEN="1"; export TEST_KITCHEN
+sudo -E /opt/chef/bin/chef-client --local-mode --config /tmp/kitchen/client.rb --log_level auto --force-formatter --no-color --json-attributes /tmp/kitchen/dna.json --chef-zero-port 8889 
+']
+E, [2019-04-15T12:58:44.853850 #86113] ERROR -- default-centos-7: ----------------------
+E, [2019-04-15T12:58:44.853880 #86113] ERROR -- default-centos-7: ------Backtrace-------
+E, [2019-04-15T12:58:44.853909 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/provisioner/base.rb:91:in `rescue in call'
+E, [2019-04-15T12:58:44.853940 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/provisioner/base.rb:67:in `call'
+E, [2019-04-15T12:58:44.854033 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:408:in `block in converge_action'
+E, [2019-04-15T12:58:44.854064 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-04-15T12:58:44.854094 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-04-15T12:58:44.854125 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-04-15T12:58:44.854156 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:512:in `action'
+E, [2019-04-15T12:58:44.854186 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:404:in `converge_action'
+E, [2019-04-15T12:58:44.854217 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-04-15T12:58:44.854247 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-04-15T12:58:44.854277 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-04-15T12:58:44.854307 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:380:in `each'
+E, [2019-04-15T12:58:44.854338 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-04-15T12:58:44.854368 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:162:in `verify'
+E, [2019-04-15T12:58:44.854398 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:191:in `block in test'
+E, [2019-04-15T12:58:44.854429 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-04-15T12:58:44.854459 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/instance.rb:187:in `test'
+E, [2019-04-15T12:58:44.854490 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-04-15T12:58:44.854520 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-04-15T12:58:44.854550 #86113] ERROR -- default-centos-7: /opt/chefdk/embedded/lib/ruby/gems/2.5.0/gems/test-kitchen-1.23.2/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-04-15T12:58:44.854581 #86113] ERROR -- default-centos-7: ----End Backtrace-----
+I, [2019-04-15T12:58:44.856198 #86113]  INFO -- default-centos-7: -----> Destroying <default-centos-7>...
+I, [2019-04-15T12:58:45.099043 #86113]  INFO -- default-centos-7: PID                 USER                TIME                COMMAND
+I, [2019-04-15T12:58:45.099265 #86113]  INFO -- default-centos-7: 8211                root                0:00                {systemd} /usr/sbin/init
+I, [2019-04-15T12:58:45.099375 #86113]  INFO -- default-centos-7: 8269                root                0:00                /usr/lib/systemd/systemd-journald
+I, [2019-04-15T12:58:45.099480 #86113]  INFO -- default-centos-7: 8282                root                0:00                /usr/lib/systemd/systemd-udevd
+I, [2019-04-15T12:58:45.099571 #86113]  INFO -- default-centos-7: 9123                81                  0:00                /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+I, [2019-04-15T12:58:45.099996 #86113]  INFO -- default-centos-7: 9198                root                0:00                /usr/lib/systemd/systemd-logind
+I, [2019-04-15T12:58:45.100082 #86113]  INFO -- default-centos-7: 9217                root                0:00                /sbin/agetty --noclear tty1 linux
+I, [2019-04-15T12:58:45.100152 #86113]  INFO -- default-centos-7: 9426                root                0:00                /usr/sbin/sshd -D
+I, [2019-04-15T12:58:45.100557 #86113]  INFO -- default-centos-7: 10245               root                0:00                sshd: kitchen [priv]
+I, [2019-04-15T12:58:45.100725 #86113]  INFO -- default-centos-7: 10247               1000                0:00                sshd: kitchen@notty
+I, [2019-04-15T12:58:45.100818 #86113]  INFO -- default-centos-7: 10568               root                0:00                /usr/lib/systemd/systemd-hostnamed
+I, [2019-04-15T12:58:45.821946 #86113]  INFO -- default-centos-7: de250440d8387557212b9253baa33ac718bb8688c42df22e9f7e0cbb8b754fa8
+I, [2019-04-15T12:58:46.385916 #86113]  INFO -- default-centos-7: de250440d8387557212b9253baa33ac718bb8688c42df22e9f7e0cbb8b754fa8
+I, [2019-04-15T12:58:46.402820 #86113]  INFO -- default-centos-7: Finished destroying <default-centos-7> (0m1.54s).

@@ -1,0 +1,7 @@
+CHECK PROCESS redis WITH PIDFILE /var/run/redis/6379/redis_6379.pid
+	START PROGRAM "/etc/init.d/redis6379 start"
+	STOP PROGRAM "/etc/init.d/redis6379 stop"	
+	IF FAILED PORT 6379 FOR 2 TIMES WITHIN 2 CYCLES THEN RESTART
+
+	
+

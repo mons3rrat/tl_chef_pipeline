@@ -1,0 +1,520 @@
+I, [2019-04-15T14:27:15.952016 #88807]  INFO -- default-ubuntu-1804: -----> Cleaning up any prior instances of <default-ubuntu-1804>
+I, [2019-04-15T14:27:15.952577 #88807]  INFO -- default-ubuntu-1804: -----> Destroying <default-ubuntu-1804>...
+I, [2019-04-15T14:27:15.953729 #88807]  INFO -- default-ubuntu-1804: Finished destroying <default-ubuntu-1804> (0m0.00s).
+I, [2019-04-15T14:27:15.954511 #88807]  INFO -- default-ubuntu-1804: -----> Testing <default-ubuntu-1804>
+I, [2019-04-15T14:27:15.955618 #88807]  INFO -- default-ubuntu-1804: -----> Creating <default-ubuntu-1804>...
+I, [2019-04-15T14:27:16.136077 #88807]  INFO -- default-ubuntu-1804: Sending build context to Docker daemon  156.7kB
+I, [2019-04-15T14:27:16.303261 #88807]  INFO -- default-ubuntu-1804: Step 1/17 : FROM ubuntu:18.04
+I, [2019-04-15T14:27:16.303528 #88807]  INFO -- default-ubuntu-1804:  ---> 1d9c17228a9e
+I, [2019-04-15T14:27:16.303605 #88807]  INFO -- default-ubuntu-1804: Step 2/17 : RUN [ ! -f "/sbin/initctl" ] || dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
+I, [2019-04-15T14:27:16.303673 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.303724 #88807]  INFO -- default-ubuntu-1804:  ---> 62dc199ea8e1
+I, [2019-04-15T14:27:16.303821 #88807]  INFO -- default-ubuntu-1804: Step 3/17 : ENV DEBIAN_FRONTEND noninteractive
+I, [2019-04-15T14:27:16.303870 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.303995 #88807]  INFO -- default-ubuntu-1804:  ---> 98610fb1415c
+I, [2019-04-15T14:27:16.304054 #88807]  INFO -- default-ubuntu-1804: Step 4/17 : ENV container docker
+I, [2019-04-15T14:27:16.304148 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.304199 #88807]  INFO -- default-ubuntu-1804:  ---> ca2a0e0ecca6
+I, [2019-04-15T14:27:16.304276 #88807]  INFO -- default-ubuntu-1804: Step 5/17 : RUN apt-get update
+I, [2019-04-15T14:27:16.304368 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.304421 #88807]  INFO -- default-ubuntu-1804:  ---> f1b2f1810e6c
+I, [2019-04-15T14:27:16.304495 #88807]  INFO -- default-ubuntu-1804: Step 6/17 : RUN apt-get install -y sudo openssh-server curl lsb-release
+I, [2019-04-15T14:27:16.304550 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.304636 #88807]  INFO -- default-ubuntu-1804:  ---> 87a20d8c7257
+I, [2019-04-15T14:27:16.304721 #88807]  INFO -- default-ubuntu-1804: Step 7/17 : RUN if ! getent passwd kitchen; then                 useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;               fi
+I, [2019-04-15T14:27:16.332310 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.332718 #88807]  INFO -- default-ubuntu-1804:  ---> 9bb27bc316ed
+I, [2019-04-15T14:27:16.332861 #88807]  INFO -- default-ubuntu-1804: Step 8/17 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+I, [2019-04-15T14:27:16.332958 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.333044 #88807]  INFO -- default-ubuntu-1804:  ---> c86ae51b443f
+I, [2019-04-15T14:27:16.333135 #88807]  INFO -- default-ubuntu-1804: Step 9/17 : RUN echo "Defaults !requiretty" >> /etc/sudoers
+I, [2019-04-15T14:27:16.333223 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.333337 #88807]  INFO -- default-ubuntu-1804:  ---> 858bf7fa51df
+I, [2019-04-15T14:27:16.333421 #88807]  INFO -- default-ubuntu-1804: Step 10/17 : RUN mkdir -p /home/kitchen/.ssh
+I, [2019-04-15T14:27:16.333493 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.333576 #88807]  INFO -- default-ubuntu-1804:  ---> c1bf8cad56fe
+I, [2019-04-15T14:27:16.333666 #88807]  INFO -- default-ubuntu-1804: Step 11/17 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2019-04-15T14:27:16.333727 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.333807 #88807]  INFO -- default-ubuntu-1804:  ---> cb27bc06bdb7
+I, [2019-04-15T14:27:16.333879 #88807]  INFO -- default-ubuntu-1804: Step 12/17 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2019-04-15T14:27:16.336472 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.336595 #88807]  INFO -- default-ubuntu-1804:  ---> d33299dc8ddb
+I, [2019-04-15T14:27:16.336774 #88807]  INFO -- default-ubuntu-1804: Step 13/17 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T14:27:16.336873 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.337168 #88807]  INFO -- default-ubuntu-1804:  ---> d23acd022490
+I, [2019-04-15T14:27:16.337287 #88807]  INFO -- default-ubuntu-1804: Step 14/17 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T14:27:16.337429 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.337567 #88807]  INFO -- default-ubuntu-1804:  ---> a6fc04950540
+I, [2019-04-15T14:27:16.337670 #88807]  INFO -- default-ubuntu-1804: Step 15/17 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T14:27:16.337743 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.337804 #88807]  INFO -- default-ubuntu-1804:  ---> bb927961c630
+I, [2019-04-15T14:27:16.337871 #88807]  INFO -- default-ubuntu-1804: Step 16/17 : RUN apt-get install -y net-tools gnupg
+I, [2019-04-15T14:27:16.337906 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.337965 #88807]  INFO -- default-ubuntu-1804:  ---> 9327434f839a
+I, [2019-04-15T14:27:16.338033 #88807]  INFO -- default-ubuntu-1804: Step 17/17 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQDxrNUN5iifZsr9LJlmOC5zP\+NzZuzPArlXOE4pZM61/oZF78PzOEiWi1u9uO\+jqsf\+5bk61Ns8PYV3mq4Qnc9sr27DQaWGlxF/gGj\+LJpyPoUXc7U4TZux8O/YxkT4KDyrL1P/UeP2Ru1lxp\+UOJg5bBaSZnTFZgarZbxpY6FnykDOpVQ\+M4WW6v7tmwXXbT4f3Wr4zA9oC6x6VDKb0\+xkFdT4ju3nT3Kjnqns/7XkS8uqFLOQDNsIEtF438hz2Js3EMFRAInhYF0yIpgRl9LMFs4CSCdVPTYRquBE7jfbpSuOcMRJk\+hfGi38PfttUG057Tr7nTdYKn28TXWSpzSl\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2019-04-15T14:27:16.338073 #88807]  INFO -- default-ubuntu-1804:  ---> Using cache
+I, [2019-04-15T14:27:16.338127 #88807]  INFO -- default-ubuntu-1804:  ---> 48881f3f729c
+I, [2019-04-15T14:27:16.338191 #88807]  INFO -- default-ubuntu-1804: Successfully built 48881f3f729c
+I, [2019-04-15T14:27:16.574178 #88807]  INFO -- default-ubuntu-1804: f96ae36dd3c7e0a14e0b52ef248c20b56dafa44e617b8a96280f9c13ba545354
+I, [2019-04-15T14:27:17.400114 #88807]  INFO -- default-ubuntu-1804: 0.0.0.0:32778
+I, [2019-04-15T14:27:17.427860 #88807]  INFO -- default-ubuntu-1804: Waiting for SSH service on localhost:32778, retrying in 3 seconds
+I, [2019-04-15T14:27:20.669412 #88807]  INFO -- default-ubuntu-1804: [SSH] Established
+I, [2019-04-15T14:27:20.671474 #88807]  INFO -- default-ubuntu-1804: Finished creating <default-ubuntu-1804> (0m4.71s).
+I, [2019-04-15T14:27:20.671735 #88807]  INFO -- default-ubuntu-1804: -----> Converging <default-ubuntu-1804>...
+I, [2019-04-15T14:27:20.672809 #88807]  INFO -- default-ubuntu-1804: Preparing files for transfer
+I, [2019-04-15T14:27:20.673010 #88807]  INFO -- default-ubuntu-1804: Preparing dna.json
+I, [2019-04-15T14:27:20.673660 #88807]  INFO -- default-ubuntu-1804: Resolving cookbook dependencies with Berkshelf 7.0.6...
+I, [2019-04-15T14:27:23.435195 #88807]  INFO -- default-ubuntu-1804: Removing non-cookbook files before transfer
+I, [2019-04-15T14:27:23.444293 #88807]  INFO -- default-ubuntu-1804: Preparing validation.pem
+I, [2019-04-15T14:27:23.449998 #88807]  INFO -- default-ubuntu-1804: Preparing client.rb
+I, [2019-04-15T14:27:23.603695 #88807]  INFO -- default-ubuntu-1804: -----> Installing Chef Omnibus (install only if missing)
+I, [2019-04-15T14:27:23.605607 #88807]  INFO -- default-ubuntu-1804: Downloading https://omnitruck.chef.io/install.sh to file /tmp/install.sh
+I, [2019-04-15T14:27:23.606070 #88807]  INFO -- default-ubuntu-1804: Trying wget...
+I, [2019-04-15T14:27:24.054986 #88807]  INFO -- default-ubuntu-1804: Download complete.
+I, [2019-04-15T14:27:24.083872 #88807]  INFO -- default-ubuntu-1804: ubuntu 18.04 x86_64
+I, [2019-04-15T14:27:24.084682 #88807]  INFO -- default-ubuntu-1804: Getting information for chef stable  for ubuntu...
+I, [2019-04-15T14:27:24.084861 #88807]  INFO -- default-ubuntu-1804: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=18.04&m=x86_64
+I, [2019-04-15T14:27:24.084916 #88807]  INFO -- default-ubuntu-1804:   to file /tmp/install.sh.87/metadata.txt
+I, [2019-04-15T14:27:24.085819 #88807]  INFO -- default-ubuntu-1804: trying wget...
+I, [2019-04-15T14:27:24.632982 #88807]  INFO -- default-ubuntu-1804: sha1	cb9903c689bcb572dc2f96c3806e3562e6a1e7cc
+I, [2019-04-15T14:27:24.633069 #88807]  INFO -- default-ubuntu-1804: sha256	50e4198864fe31eb8fa8e9b260e5ed2d9973540a23902ad1b1d8ab779a5f0879
+I, [2019-04-15T14:27:24.633114 #88807]  INFO -- default-ubuntu-1804: url	https://packages.chef.io/files/stable/chef/14.11.21/ubuntu/18.04/chef_14.11.21-1_amd64.deb
+I, [2019-04-15T14:27:24.633378 #88807]  INFO -- default-ubuntu-1804: version	14.11.21
+I, [2019-04-15T14:27:24.637330 #88807]  INFO -- default-ubuntu-1804: downloaded metadata file looks valid...
+I, [2019-04-15T14:27:24.650073 #88807]  INFO -- default-ubuntu-1804: downloading https://packages.chef.io/files/stable/chef/14.11.21/ubuntu/18.04/chef_14.11.21-1_amd64.deb
+I, [2019-04-15T14:27:24.650241 #88807]  INFO -- default-ubuntu-1804:   to file /tmp/install.sh.87/chef_14.11.21-1_amd64.deb
+I, [2019-04-15T14:27:24.651246 #88807]  INFO -- default-ubuntu-1804: trying wget...
+I, [2019-04-15T14:27:59.624035 #88807]  INFO -- default-ubuntu-1804: Comparing checksum with sha256sum...
+I, [2019-04-15T14:27:59.801669 #88807]  INFO -- default-ubuntu-1804: 
+I, [2019-04-15T14:27:59.801765 #88807]  INFO -- default-ubuntu-1804: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2019-04-15T14:27:59.801812 #88807]  INFO -- default-ubuntu-1804: 
+I, [2019-04-15T14:27:59.801853 #88807]  INFO -- default-ubuntu-1804: You are installing an omnibus package without a version pin.  If you are installing
+I, [2019-04-15T14:27:59.801895 #88807]  INFO -- default-ubuntu-1804: on production servers via an automated process this is DANGEROUS and you will
+I, [2019-04-15T14:27:59.801935 #88807]  INFO -- default-ubuntu-1804: be upgraded without warning on new releases, even to new major releases.
+I, [2019-04-15T14:27:59.801975 #88807]  INFO -- default-ubuntu-1804: Letting the version float is only appropriate in desktop, test, development or
+I, [2019-04-15T14:27:59.802014 #88807]  INFO -- default-ubuntu-1804: CI/CD environments.
+I, [2019-04-15T14:27:59.802080 #88807]  INFO -- default-ubuntu-1804: 
+I, [2019-04-15T14:27:59.802119 #88807]  INFO -- default-ubuntu-1804: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2019-04-15T14:27:59.802158 #88807]  INFO -- default-ubuntu-1804: 
+I, [2019-04-15T14:27:59.802196 #88807]  INFO -- default-ubuntu-1804: Installing chef 
+I, [2019-04-15T14:27:59.802234 #88807]  INFO -- default-ubuntu-1804: installing with dpkg...
+I, [2019-04-15T14:27:59.856701 #88807]  INFO -- default-ubuntu-1804: Selecting previously unselected package chef.
+I, [2019-04-15T14:27:59.868996 #88807]  INFO -- default-ubuntu-1804: (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 10396 files and directories currently installed.)
+I, [2019-04-15T14:27:59.870775 #88807]  INFO -- default-ubuntu-1804: Preparing to unpack .../chef_14.11.21-1_amd64.deb ...
+I, [2019-04-15T14:27:59.875213 #88807]  INFO -- default-ubuntu-1804: Unpacking chef (14.11.21-1) ...
+I, [2019-04-15T14:28:06.487672 #88807]  INFO -- default-ubuntu-1804: Setting up chef (14.11.21-1) ...
+I, [2019-04-15T14:28:06.608115 #88807]  INFO -- default-ubuntu-1804: Thank you for installing Chef!
+I, [2019-04-15T14:28:06.686206 #88807]  INFO -- default-ubuntu-1804: Transferring files to <default-ubuntu-1804>
+I, [2019-04-15T14:28:08.747455 #88807]  INFO -- default-ubuntu-1804: Starting Chef Client, version 14.11.21
+I, [2019-04-15T14:28:09.426947 #88807]  INFO -- default-ubuntu-1804: [2019-04-15T19:28:09+00:00] WARN: Plugin Network: unable to detect ipaddress
+I, [2019-04-15T14:28:10.180876 #88807]  INFO -- default-ubuntu-1804: Creating a new client identity for default-ubuntu-1804 using the validator key.
+I, [2019-04-15T14:28:10.313328 #88807]  INFO -- default-ubuntu-1804: resolving cookbooks for run list: ["monit::default"]
+I, [2019-04-15T14:28:10.371297 #88807]  INFO -- default-ubuntu-1804: Synchronizing Cookbooks:
+I, [2019-04-15T14:28:10.438229 #88807]  INFO -- default-ubuntu-1804:   - monit (0.7.1)
+I, [2019-04-15T14:28:10.438851 #88807]  INFO -- default-ubuntu-1804: Installing Cookbook Gems:
+I, [2019-04-15T14:28:10.446527 #88807]  INFO -- default-ubuntu-1804: Compiling Cookbooks...
+I, [2019-04-15T14:28:10.458737 #88807]  INFO -- default-ubuntu-1804: Converging 5 resources
+I, [2019-04-15T14:28:10.460233 #88807]  INFO -- default-ubuntu-1804: Recipe: monit::default
+I, [2019-04-15T14:28:14.883343 #88807]  INFO -- default-ubuntu-1804:   * apt_package[monit] action install
+I, [2019-04-15T14:28:14.883429 #88807]  INFO -- default-ubuntu-1804:     - install version 1:5.25.1-1build1 of package monit
+I, [2019-04-15T14:28:14.883485 #88807]  INFO -- default-ubuntu-1804:   * cookbook_file[/etc/default/monit] action create
+I, [2019-04-15T14:28:14.883538 #88807]  INFO -- default-ubuntu-1804:     - update content in file /etc/default/monit from f8329a to 67bfa3
+I, [2019-04-15T14:28:14.883580 #88807]  INFO -- default-ubuntu-1804:     --- /etc/default/monit	2017-11-28 11:02:23.000000000 +0000
+I, [2019-04-15T14:28:14.883621 #88807]  INFO -- default-ubuntu-1804:     +++ /etc/default/.chef-monit20190415-170-qqnvl3	2019-04-15 19:28:14.894977000 +0000
+I, [2019-04-15T14:28:14.883667 #88807]  INFO -- default-ubuntu-1804:     @@ -1,11 +1,12 @@
+I, [2019-04-15T14:28:14.883721 #88807]  INFO -- default-ubuntu-1804:     -# /etc/default/monit
+I, [2019-04-15T14:28:14.883765 #88807]  INFO -- default-ubuntu-1804:     +# Defaults for monit initscript
+I, [2019-04-15T14:28:14.883802 #88807]  INFO -- default-ubuntu-1804:     +# sourced by /etc/init.d/monit
+I, [2019-04-15T14:28:14.883849 #88807]  INFO -- default-ubuntu-1804:     +# installed at /etc/default/monit by chef
+I, [2019-04-15T14:28:14.883885 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:14.883922 #88807]  INFO -- default-ubuntu-1804:     -# Defaults for monit initscript.  This file is sourced by
+I, [2019-04-15T14:28:14.883960 #88807]  INFO -- default-ubuntu-1804:     -# /bin/sh from /etc/init.d/monit.
+I, [2019-04-15T14:28:14.883997 #88807]  INFO -- default-ubuntu-1804:     +# You must set this variable to for monit to start
+I, [2019-04-15T14:28:14.884036 #88807]  INFO -- default-ubuntu-1804:     +startup=1
+I, [2019-04-15T14:28:14.884088 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:14.884156 #88807]  INFO -- default-ubuntu-1804:     -# Set START to yes to start the monit
+I, [2019-04-15T14:28:14.884194 #88807]  INFO -- default-ubuntu-1804:     -START=yes
+I, [2019-04-15T14:28:14.884231 #88807]  INFO -- default-ubuntu-1804:     +# To change the intervals which monit should run,
+I, [2019-04-15T14:28:14.884269 #88807]  INFO -- default-ubuntu-1804:     +# edit the configuration file /etc/monit/monitrc
+I, [2019-04-15T14:28:14.884307 #88807]  INFO -- default-ubuntu-1804:     +# It can no longer be configured here.
+I, [2019-04-15T14:28:14.884352 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:14.884405 #88807]  INFO -- default-ubuntu-1804:     -# Options to pass to monit
+I, [2019-04-15T14:28:14.884446 #88807]  INFO -- default-ubuntu-1804:     -#MONIT_OPTS=
+I, [2019-04-15T14:28:14.990007 #88807]  INFO -- default-ubuntu-1804:   * service[monit] action enable (up to date)
+I, [2019-04-15T14:28:15.136443 #88807]  INFO -- default-ubuntu-1804:   * service[monit] action start
+I, [2019-04-15T14:28:15.137057 #88807]  INFO -- default-ubuntu-1804:     - start service service[monit]
+I, [2019-04-15T14:28:15.144447 #88807]  INFO -- default-ubuntu-1804:   * directory[/etc/monit/conf.d/] action create (up to date)
+I, [2019-04-15T14:28:15.162478 #88807]  INFO -- default-ubuntu-1804:   * template[/etc/monit/monitrc] action create
+I, [2019-04-15T14:28:15.164031 #88807]  INFO -- default-ubuntu-1804:     - update content in file /etc/monit/monitrc from ead543 to fb22ed
+I, [2019-04-15T14:28:15.166426 #88807]  INFO -- default-ubuntu-1804:     --- /etc/monit/monitrc	2018-02-05 16:51:07.000000000 +0000
+I, [2019-04-15T14:28:15.168729 #88807]  INFO -- default-ubuntu-1804:     +++ /etc/monit/.chef-monitrc20190415-170-18vdne6	2019-04-15 19:28:15.164977000 +0000
+I, [2019-04-15T14:28:15.170955 #88807]  INFO -- default-ubuntu-1804:     @@ -1,309 +1,29 @@
+I, [2019-04-15T14:28:15.176679 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.177118 #88807]  INFO -- default-ubuntu-1804:     -## Monit control file
+I, [2019-04-15T14:28:15.177527 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.177895 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.178276 #88807]  INFO -- default-ubuntu-1804:     -## Comments begin with a '#' and extend through the end of the line. Keywords
+I, [2019-04-15T14:28:15.178651 #88807]  INFO -- default-ubuntu-1804:     -## are case insensitive. All path's MUST BE FULLY QUALIFIED, starting with '/'.
+I, [2019-04-15T14:28:15.179015 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.179990 #88807]  INFO -- default-ubuntu-1804:     -## Below you will find examples of some frequently used statements. For
+I, [2019-04-15T14:28:15.180430 #88807]  INFO -- default-ubuntu-1804:     -## information about the control file and a complete list of statements and
+I, [2019-04-15T14:28:15.180679 #88807]  INFO -- default-ubuntu-1804:     -## options, please have a look in the Monit manual.
+I, [2019-04-15T14:28:15.180863 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.180912 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.181200 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.181250 #88807]  INFO -- default-ubuntu-1804:     -## Global section
+I, [2019-04-15T14:28:15.181328 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.199365 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.199465 #88807]  INFO -- default-ubuntu-1804:     -## Start Monit in the background (run as a daemon):
+I, [2019-04-15T14:28:15.199914 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.200082 #88807]  INFO -- default-ubuntu-1804:     -  set daemon 120            # check services at 2-minute intervals
+I, [2019-04-15T14:28:15.200147 #88807]  INFO -- default-ubuntu-1804:     -#   with start delay 240    # optional: delay the first check by 4-minutes (by
+I, [2019-04-15T14:28:15.200546 #88807]  INFO -- default-ubuntu-1804:     -#                           # default Monit check immediately after Monit start)
+I, [2019-04-15T14:28:15.200634 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.200966 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.201043 #88807]  INFO -- default-ubuntu-1804:     -## Set syslog logging. If you want to log to a standalone log file instead,
+I, [2019-04-15T14:28:15.201107 #88807]  INFO -- default-ubuntu-1804:     -## specify the full path to the log file
+I, [2019-04-15T14:28:15.201516 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.201843 #88807]  INFO -- default-ubuntu-1804:     -  set log /var/log/monit.log
+I, [2019-04-15T14:28:15.201955 #88807]  INFO -- default-ubuntu-1804:     +set daemon 60
+I, [2019-04-15T14:28:15.202006 #88807]  INFO -- default-ubuntu-1804:     +  with start delay 120
+I, [2019-04-15T14:28:15.202536 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:15.202631 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.202675 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.202713 #88807]  INFO -- default-ubuntu-1804:     -## Set the location of the Monit lock file which stores the process id of the
+I, [2019-04-15T14:28:15.202921 #88807]  INFO -- default-ubuntu-1804:     -## running Monit instance. By default this file is stored in $HOME/.monit.pid
+I, [2019-04-15T14:28:15.203474 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.203571 #88807]  INFO -- default-ubuntu-1804:     -# set pidfile /var/run/monit.pid
+I, [2019-04-15T14:28:15.203639 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.204266 #88807]  INFO -- default-ubuntu-1804:     -## Set the location of the Monit id file which stores the unique id for the
+I, [2019-04-15T14:28:15.204469 #88807]  INFO -- default-ubuntu-1804:     -## Monit instance. The id is generated and stored on first Monit start. By
+I, [2019-04-15T14:28:15.204537 #88807]  INFO -- default-ubuntu-1804:     -## default the file is placed in $HOME/.monit.id.
+I, [2019-04-15T14:28:15.204834 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.204895 #88807]  INFO -- default-ubuntu-1804:     -# set idfile /var/.monit.id
+I, [2019-04-15T14:28:15.205271 #88807]  INFO -- default-ubuntu-1804:     -  set idfile /var/lib/monit/id
+I, [2019-04-15T14:28:15.205366 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.205899 #88807]  INFO -- default-ubuntu-1804:     -## Set the location of the Monit state file which saves monitoring states
+I, [2019-04-15T14:28:15.206007 #88807]  INFO -- default-ubuntu-1804:     -## on each cycle. By default the file is placed in $HOME/.monit.state. If
+I, [2019-04-15T14:28:15.206071 #88807]  INFO -- default-ubuntu-1804:     -## the state file is stored on a persistent filesystem, Monit will recover
+I, [2019-04-15T14:28:15.206123 #88807]  INFO -- default-ubuntu-1804:     -## the monitoring state across reboots. If it is on temporary filesystem, the
+I, [2019-04-15T14:28:15.206189 #88807]  INFO -- default-ubuntu-1804:     -## state will be lost on reboot which may be convenient in some situations.
+I, [2019-04-15T14:28:15.206235 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.206277 #88807]  INFO -- default-ubuntu-1804:     -  set statefile /var/lib/monit/state
+I, [2019-04-15T14:28:15.206720 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.206772 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.206816 #88807]  INFO -- default-ubuntu-1804:     +set logfile syslog facility log_daemon
+I, [2019-04-15T14:28:15.207214 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:15.207278 #88807]  INFO -- default-ubuntu-1804:     -## Set limits for various tests. The following example shows the default values:
+I, [2019-04-15T14:28:15.207329 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.207374 #88807]  INFO -- default-ubuntu-1804:     -# set limits {
+I, [2019-04-15T14:28:15.207417 #88807]  INFO -- default-ubuntu-1804:     -#     programOutput:     512 B,      # check program's output truncate limit
+I, [2019-04-15T14:28:15.207814 #88807]  INFO -- default-ubuntu-1804:     -#     sendExpectBuffer:  256 B,      # limit for send/expect protocol test
+I, [2019-04-15T14:28:15.233993 #88807]  INFO -- default-ubuntu-1804:     -#     fileContentBuffer: 512 B,      # limit for file content test
+I, [2019-04-15T14:28:15.234102 #88807]  INFO -- default-ubuntu-1804:     -#     httpContentBuffer: 1 MB,       # limit for HTTP content test
+I, [2019-04-15T14:28:15.234149 #88807]  INFO -- default-ubuntu-1804:     -#     networkTimeout:    5 seconds   # timeout for network I/O
+I, [2019-04-15T14:28:15.234540 #88807]  INFO -- default-ubuntu-1804:     -#     programTimeout:    300 seconds # timeout for check program
+I, [2019-04-15T14:28:15.234616 #88807]  INFO -- default-ubuntu-1804:     -#     stopTimeout:       30 seconds  # timeout for service stop
+I, [2019-04-15T14:28:15.234683 #88807]  INFO -- default-ubuntu-1804:     -#     startTimeout:      30 seconds  # timeout for service start
+I, [2019-04-15T14:28:15.235005 #88807]  INFO -- default-ubuntu-1804:     -#     restartTimeout:    30 seconds  # timeout for service restart
+I, [2019-04-15T14:28:15.235079 #88807]  INFO -- default-ubuntu-1804:     -# }
+I, [2019-04-15T14:28:15.235383 #88807]  INFO -- default-ubuntu-1804:     +set mailserver localhost
+I, [2019-04-15T14:28:15.235459 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:15.235812 #88807]  INFO -- default-ubuntu-1804:     -## Set global SSL options (just most common options showed, see manual for
+I, [2019-04-15T14:28:15.235902 #88807]  INFO -- default-ubuntu-1804:     -## full list).
+I, [2019-04-15T14:28:15.235949 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.236295 #88807]  INFO -- default-ubuntu-1804:     -# set ssl {
+I, [2019-04-15T14:28:15.236395 #88807]  INFO -- default-ubuntu-1804:     -#     verify     : enable, # verify SSL certificates (disabled by default but STRONGLY RECOMMENDED)
+I, [2019-04-15T14:28:15.236899 #88807]  INFO -- default-ubuntu-1804:     -#     selfsigned : allow   # allow self signed SSL certificates (reject by default)
+I, [2019-04-15T14:28:15.237052 #88807]  INFO -- default-ubuntu-1804:     -# }
+I, [2019-04-15T14:28:15.237106 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.237604 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.237690 #88807]  INFO -- default-ubuntu-1804:     -## Set the list of mail servers for alert delivery. Multiple servers may be
+I, [2019-04-15T14:28:15.238029 #88807]  INFO -- default-ubuntu-1804:     -## specified using a comma separator. If the first mail server fails, Monit
+I, [2019-04-15T14:28:15.238530 #88807]  INFO -- default-ubuntu-1804:     -# will use the second mail server in the list and so on. By default Monit uses
+I, [2019-04-15T14:28:15.238643 #88807]  INFO -- default-ubuntu-1804:     -# port 25 - it is possible to override this with the PORT option.
+I, [2019-04-15T14:28:15.238697 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.239164 #88807]  INFO -- default-ubuntu-1804:     -# set mailserver mail.bar.baz,               # primary mailserver
+I, [2019-04-15T14:28:15.239257 #88807]  INFO -- default-ubuntu-1804:     -#                backup.bar.baz port 10025,  # backup mailserver on port 10025
+I, [2019-04-15T14:28:15.239321 #88807]  INFO -- default-ubuntu-1804:     -#                localhost                   # fallback relay
+I, [2019-04-15T14:28:15.239580 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.239888 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.239934 #88807]  INFO -- default-ubuntu-1804:     -## By default Monit will drop alert events if no mail servers are available.
+I, [2019-04-15T14:28:15.239975 #88807]  INFO -- default-ubuntu-1804:     -## If you want to keep the alerts for later delivery retry, you can use the
+I, [2019-04-15T14:28:15.240236 #88807]  INFO -- default-ubuntu-1804:     -## EVENTQUEUE statement. The base directory where undelivered alerts will be
+I, [2019-04-15T14:28:15.240437 #88807]  INFO -- default-ubuntu-1804:     -## stored is specified by the BASEDIR option. You can limit the queue size
+I, [2019-04-15T14:28:15.240612 #88807]  INFO -- default-ubuntu-1804:     -## by using the SLOTS option (if omitted, the queue is limited by space
+I, [2019-04-15T14:28:15.240998 #88807]  INFO -- default-ubuntu-1804:     -## available in the back end filesystem).
+I, [2019-04-15T14:28:15.241102 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.241183 #88807]  INFO -- default-ubuntu-1804:     -  set eventqueue
+I, [2019-04-15T14:28:15.259324 #88807]  INFO -- default-ubuntu-1804:     -      basedir /var/lib/monit/events # set the base directory where events will be stored
+I, [2019-04-15T14:28:15.259498 #88807]  INFO -- default-ubuntu-1804:     -      slots 100                     # optionally limit the queue size
+I, [2019-04-15T14:28:15.259562 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.260076 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.260184 #88807]  INFO -- default-ubuntu-1804:     -## Send status and events to M/Monit (for more informations about M/Monit
+I, [2019-04-15T14:28:15.260238 #88807]  INFO -- default-ubuntu-1804:     -## see https://mmonit.com/). By default Monit registers credentials with
+I, [2019-04-15T14:28:15.260278 #88807]  INFO -- default-ubuntu-1804:     -## M/Monit so M/Monit can smoothly communicate back to Monit and you don't
+I, [2019-04-15T14:28:15.260315 #88807]  INFO -- default-ubuntu-1804:     -## have to register Monit credentials manually in M/Monit. It is possible to
+I, [2019-04-15T14:28:15.260749 #88807]  INFO -- default-ubuntu-1804:     -## disable credential registration using the commented out option below.
+I, [2019-04-15T14:28:15.260980 #88807]  INFO -- default-ubuntu-1804:     -## Though, if safety is a concern we recommend instead using https when
+I, [2019-04-15T14:28:15.261475 #88807]  INFO -- default-ubuntu-1804:     -## communicating with M/Monit and send credentials encrypted. The password
+I, [2019-04-15T14:28:15.261580 #88807]  INFO -- default-ubuntu-1804:     -## should be URL encoded if it contains URL-significant characters like
+I, [2019-04-15T14:28:15.261627 #88807]  INFO -- default-ubuntu-1804:     -## ":", "?", "@". Default timeout is 5 seconds, you can customize it by
+I, [2019-04-15T14:28:15.261664 #88807]  INFO -- default-ubuntu-1804:     -## adding the timeout option.
+I, [2019-04-15T14:28:15.261699 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.261736 #88807]  INFO -- default-ubuntu-1804:     -# set mmonit http://monit:monit@192.168.1.10:8080/collector
+I, [2019-04-15T14:28:15.262168 #88807]  INFO -- default-ubuntu-1804:     -#     # with timeout 30 seconds              # Default timeout is 5 seconds
+I, [2019-04-15T14:28:15.262686 #88807]  INFO -- default-ubuntu-1804:     -#     # and register without credentials     # Don't register credentials
+I, [2019-04-15T14:28:15.262777 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.262824 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.262865 #88807]  INFO -- default-ubuntu-1804:     -## Monit by default uses the following format for alerts if the mail-format
+I, [2019-04-15T14:28:15.262927 #88807]  INFO -- default-ubuntu-1804:     -## statement is missing::
+I, [2019-04-15T14:28:15.263368 #88807]  INFO -- default-ubuntu-1804:     -## --8<--
+I, [2019-04-15T14:28:15.263447 #88807]  INFO -- default-ubuntu-1804:     -## set mail-format {
+I, [2019-04-15T14:28:15.263489 #88807]  INFO -- default-ubuntu-1804:     -##   from:    Monit <monit@$HOST>
+I, [2019-04-15T14:28:15.263527 #88807]  INFO -- default-ubuntu-1804:     -##   subject: monit alert --  $EVENT $SERVICE
+I, [2019-04-15T14:28:15.263566 #88807]  INFO -- default-ubuntu-1804:     -##   message: $EVENT Service $SERVICE
+I, [2019-04-15T14:28:15.264056 #88807]  INFO -- default-ubuntu-1804:     -##                 Date:        $DATE
+I, [2019-04-15T14:28:15.264364 #88807]  INFO -- default-ubuntu-1804:     -##                 Action:      $ACTION
+I, [2019-04-15T14:28:15.264666 #88807]  INFO -- default-ubuntu-1804:     -##                 Host:        $HOST
+I, [2019-04-15T14:28:15.264730 #88807]  INFO -- default-ubuntu-1804:     -##                 Description: $DESCRIPTION
+I, [2019-04-15T14:28:15.264771 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.264809 #88807]  INFO -- default-ubuntu-1804:     -##            Your faithful employee,
+I, [2019-04-15T14:28:15.264846 #88807]  INFO -- default-ubuntu-1804:     -##            Monit
+I, [2019-04-15T14:28:15.265300 #88807]  INFO -- default-ubuntu-1804:     -## }
+I, [2019-04-15T14:28:15.265391 #88807]  INFO -- default-ubuntu-1804:     -## --8<--
+I, [2019-04-15T14:28:15.265477 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.265518 #88807]  INFO -- default-ubuntu-1804:     -## You can override this message format or parts of it, such as subject
+I, [2019-04-15T14:28:15.265956 #88807]  INFO -- default-ubuntu-1804:     -## or sender using the MAIL-FORMAT statement. Macros such as $DATE, etc.
+I, [2019-04-15T14:28:15.266034 #88807]  INFO -- default-ubuntu-1804:     -## are expanded at runtime. For example, to override the sender, use:
+I, [2019-04-15T14:28:15.266076 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.266113 #88807]  INFO -- default-ubuntu-1804:     -# set mail-format { from: monit@foo.bar }
+I, [2019-04-15T14:28:15.266481 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.266531 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.266568 #88807]  INFO -- default-ubuntu-1804:     -## You can set alert recipients whom will receive alerts if/when a
+I, [2019-04-15T14:28:15.266605 #88807]  INFO -- default-ubuntu-1804:     -## service defined in this file has errors. Alerts may be restricted on
+I, [2019-04-15T14:28:15.266641 #88807]  INFO -- default-ubuntu-1804:     -## events by using a filter as in the second example below.
+I, [2019-04-15T14:28:15.267008 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.267073 #88807]  INFO -- default-ubuntu-1804:     -# set alert sysadm@foo.bar                       # receive all alerts
+I, [2019-04-15T14:28:15.267113 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.267385 #88807]  INFO -- default-ubuntu-1804:     -## Do not alert when Monit starts, stops or performs a user initiated action.
+I, [2019-04-15T14:28:15.267640 #88807]  INFO -- default-ubuntu-1804:     -## This filter is recommended to avoid getting alerts for trivial cases.
+I, [2019-04-15T14:28:15.267690 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.267730 #88807]  INFO -- default-ubuntu-1804:     -# set alert your-name@your.domain not on { instance, action }
+I, [2019-04-15T14:28:15.268137 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.268200 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.268241 #88807]  INFO -- default-ubuntu-1804:     -## Monit has an embedded HTTP interface which can be used to view status of
+I, [2019-04-15T14:28:15.268279 #88807]  INFO -- default-ubuntu-1804:     -## services monitored and manage services from a web interface. The HTTP
+I, [2019-04-15T14:28:15.268314 #88807]  INFO -- default-ubuntu-1804:     -## interface is also required if you want to issue Monit commands from the
+I, [2019-04-15T14:28:15.268350 #88807]  INFO -- default-ubuntu-1804:     -## command line, such as 'monit status' or 'monit restart service' The reason
+I, [2019-04-15T14:28:15.268749 #88807]  INFO -- default-ubuntu-1804:     -## for this is that the Monit client uses the HTTP interface to send these
+I, [2019-04-15T14:28:15.268817 #88807]  INFO -- default-ubuntu-1804:     -## commands to a running Monit daemon. See the Monit Wiki if you want to
+I, [2019-04-15T14:28:15.268859 #88807]  INFO -- default-ubuntu-1804:     -## enable SSL for the HTTP interface.
+I, [2019-04-15T14:28:15.272519 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.273306 #88807]  INFO -- default-ubuntu-1804:     -# set httpd port 2812 and
+I, [2019-04-15T14:28:15.273424 #88807]  INFO -- default-ubuntu-1804:     -#     use address localhost  # only accept connection from localhost
+I, [2019-04-15T14:28:15.274083 #88807]  INFO -- default-ubuntu-1804:     -#     allow localhost        # allow localhost to connect to the server and
+I, [2019-04-15T14:28:15.274183 #88807]  INFO -- default-ubuntu-1804:     -#     allow admin:monit      # require user 'admin' with password 'monit'
+I, [2019-04-15T14:28:15.274627 #88807]  INFO -- default-ubuntu-1804:     -#     #with ssl {            # enable SSL/TLS and set path to server certificate
+I, [2019-04-15T14:28:15.274719 #88807]  INFO -- default-ubuntu-1804:     -#     #    pemfile: /etc/ssl/certs/monit.pem
+I, [2019-04-15T14:28:15.274759 #88807]  INFO -- default-ubuntu-1804:     -#     #}
+I, [2019-04-15T14:28:15.274796 #88807]  INFO -- default-ubuntu-1804:     +set eventqueue
+I, [2019-04-15T14:28:15.274832 #88807]  INFO -- default-ubuntu-1804:     +    basedir /var/monit  # set the base directory where events will be stored
+I, [2019-04-15T14:28:15.275173 #88807]  INFO -- default-ubuntu-1804:     +#    slots 1000          # optionaly limit the queue size
+I, [2019-04-15T14:28:15.275221 #88807]  INFO -- default-ubuntu-1804:      
+I, [2019-04-15T14:28:15.275260 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.275298 #88807]  INFO -- default-ubuntu-1804:     -## Services
+I, [2019-04-15T14:28:15.275658 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.275710 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.275769 #88807]  INFO -- default-ubuntu-1804:     -## Check general system resources such as load average, cpu and memory
+I, [2019-04-15T14:28:15.275830 #88807]  INFO -- default-ubuntu-1804:     -## usage. Each test specifies a resource, conditions and the action to be
+I, [2019-04-15T14:28:15.275901 #88807]  INFO -- default-ubuntu-1804:     -## performed should a test fail.
+I, [2019-04-15T14:28:15.290836 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.291035 #88807]  INFO -- default-ubuntu-1804:     -#  check system $HOST
+I, [2019-04-15T14:28:15.291156 #88807]  INFO -- default-ubuntu-1804:     -#    if loadavg (1min) > 4 then alert
+I, [2019-04-15T14:28:15.291655 #88807]  INFO -- default-ubuntu-1804:     -#    if loadavg (5min) > 2 then alert
+I, [2019-04-15T14:28:15.291735 #88807]  INFO -- default-ubuntu-1804:     -#    if cpu usage > 95% for 10 cycles then alert
+I, [2019-04-15T14:28:15.291780 #88807]  INFO -- default-ubuntu-1804:     -#    if memory usage > 75% then alert
+I, [2019-04-15T14:28:15.292104 #88807]  INFO -- default-ubuntu-1804:     -#    if swap usage > 25% then alert
+I, [2019-04-15T14:28:15.292166 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.292206 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.292700 #88807]  INFO -- default-ubuntu-1804:     -## Check if a file exists, checksum, permissions, uid and gid. In addition
+I, [2019-04-15T14:28:15.292770 #88807]  INFO -- default-ubuntu-1804:     -## to alert recipients in the global section, customized alert can be sent to
+I, [2019-04-15T14:28:15.292812 #88807]  INFO -- default-ubuntu-1804:     -## additional recipients by specifying a local alert handler. The service may
+I, [2019-04-15T14:28:15.292851 #88807]  INFO -- default-ubuntu-1804:     -## be grouped using the GROUP option. More than one group can be specified by
+I, [2019-04-15T14:28:15.292890 #88807]  INFO -- default-ubuntu-1804:     -## repeating the 'group name' statement.
+I, [2019-04-15T14:28:15.292959 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.292996 #88807]  INFO -- default-ubuntu-1804:     -#  check file apache_bin with path /usr/local/apache/bin/httpd
+I, [2019-04-15T14:28:15.294114 #88807]  INFO -- default-ubuntu-1804:     -#    if failed checksum and
+I, [2019-04-15T14:28:15.294191 #88807]  INFO -- default-ubuntu-1804:     -#       expect the sum 8f7f419955cefa0b33a2ba316cba3659 then unmonitor
+I, [2019-04-15T14:28:15.294221 #88807]  INFO -- default-ubuntu-1804:     -#    if failed permission 755 then unmonitor
+I, [2019-04-15T14:28:15.294245 #88807]  INFO -- default-ubuntu-1804:     -#    if failed uid "root" then unmonitor
+I, [2019-04-15T14:28:15.294268 #88807]  INFO -- default-ubuntu-1804:     -#    if failed gid "root" then unmonitor
+I, [2019-04-15T14:28:15.294291 #88807]  INFO -- default-ubuntu-1804:     -#    alert security@foo.bar on {
+I, [2019-04-15T14:28:15.294313 #88807]  INFO -- default-ubuntu-1804:     -#           checksum, permission, uid, gid, unmonitor
+I, [2019-04-15T14:28:15.294737 #88807]  INFO -- default-ubuntu-1804:     -#        } with the mail-format { subject: Alarm! }
+I, [2019-04-15T14:28:15.294798 #88807]  INFO -- default-ubuntu-1804:     -#    group server
+I, [2019-04-15T14:28:15.294838 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.294873 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.294910 #88807]  INFO -- default-ubuntu-1804:     -## Check that a process is running, in this case Apache, and that it respond
+I, [2019-04-15T14:28:15.294948 #88807]  INFO -- default-ubuntu-1804:     -## to HTTP and HTTPS requests. Check its resource usage such as cpu and memory,
+I, [2019-04-15T14:28:15.295408 #88807]  INFO -- default-ubuntu-1804:     -## and number of children. If the process is not running, Monit will restart
+I, [2019-04-15T14:28:15.295465 #88807]  INFO -- default-ubuntu-1804:     -## it by default. In case the service is restarted very often and the
+I, [2019-04-15T14:28:15.295508 #88807]  INFO -- default-ubuntu-1804:     -## problem remains, it is possible to disable monitoring using the TIMEOUT
+I, [2019-04-15T14:28:15.295836 #88807]  INFO -- default-ubuntu-1804:     -## statement. This service depends on another service (apache_bin) which
+I, [2019-04-15T14:28:15.295892 #88807]  INFO -- default-ubuntu-1804:     -## is defined above.
+I, [2019-04-15T14:28:15.295924 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.295948 #88807]  INFO -- default-ubuntu-1804:     -#  check process apache with pidfile /usr/local/apache/logs/httpd.pid
+I, [2019-04-15T14:28:15.295972 #88807]  INFO -- default-ubuntu-1804:     -#    start program = "/etc/init.d/httpd start" with timeout 60 seconds
+I, [2019-04-15T14:28:15.296416 #88807]  INFO -- default-ubuntu-1804:     -#    stop program  = "/etc/init.d/httpd stop"
+I, [2019-04-15T14:28:15.296465 #88807]  INFO -- default-ubuntu-1804:     -#    if cpu > 60% for 2 cycles then alert
+I, [2019-04-15T14:28:15.296510 #88807]  INFO -- default-ubuntu-1804:     -#    if cpu > 80% for 5 cycles then restart
+I, [2019-04-15T14:28:15.296534 #88807]  INFO -- default-ubuntu-1804:     -#    if totalmem > 200.0 MB for 5 cycles then restart
+I, [2019-04-15T14:28:15.296558 #88807]  INFO -- default-ubuntu-1804:     -#    if children > 250 then restart
+I, [2019-04-15T14:28:15.296581 #88807]  INFO -- default-ubuntu-1804:     -#    if loadavg(5min) greater than 10 for 8 cycles then stop
+I, [2019-04-15T14:28:15.296604 #88807]  INFO -- default-ubuntu-1804:     -#    if disk read > 500 kb/s for 10 cycles then alert
+I, [2019-04-15T14:28:15.297178 #88807]  INFO -- default-ubuntu-1804:     -#    if disk write > 500 kb/s for 10 cycles then alert
+I, [2019-04-15T14:28:15.297269 #88807]  INFO -- default-ubuntu-1804:     -#    if failed host www.tildeslash.com port 80 protocol http and request "/somefile.html" then restart
+I, [2019-04-15T14:28:15.297322 #88807]  INFO -- default-ubuntu-1804:     -#    if failed port 443 protocol https with timeout 15 seconds then restart
+I, [2019-04-15T14:28:15.297364 #88807]  INFO -- default-ubuntu-1804:     -#    if 3 restarts within 5 cycles then unmonitor
+I, [2019-04-15T14:28:15.297420 #88807]  INFO -- default-ubuntu-1804:     -#    depends on apache_bin
+I, [2019-04-15T14:28:15.297479 #88807]  INFO -- default-ubuntu-1804:     -#    group server
+I, [2019-04-15T14:28:15.298025 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.298093 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.298158 #88807]  INFO -- default-ubuntu-1804:     -## Check filesystem permissions, uid, gid, space usage, inode usage and disk I/O.
+I, [2019-04-15T14:28:15.298219 #88807]  INFO -- default-ubuntu-1804:     -## Other services, such as databases, may depend on this resource and an automatically
+I, [2019-04-15T14:28:15.298577 #88807]  INFO -- default-ubuntu-1804:     -## graceful stop may be cascaded to them before the filesystem will become full and data
+I, [2019-04-15T14:28:15.298643 #88807]  INFO -- default-ubuntu-1804:     -## lost.
+I, [2019-04-15T14:28:15.298718 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.298757 #88807]  INFO -- default-ubuntu-1804:     -#  check filesystem datafs with path /dev/sdb1
+I, [2019-04-15T14:28:15.299169 #88807]  INFO -- default-ubuntu-1804:     -#    start program  = "/bin/mount /data"
+I, [2019-04-15T14:28:15.299245 #88807]  INFO -- default-ubuntu-1804:     -#    stop program  = "/bin/umount /data"
+I, [2019-04-15T14:28:15.299290 #88807]  INFO -- default-ubuntu-1804:     -#    if failed permission 660 then unmonitor
+I, [2019-04-15T14:28:15.299328 #88807]  INFO -- default-ubuntu-1804:     -#    if failed uid "root" then unmonitor
+I, [2019-04-15T14:28:15.299366 #88807]  INFO -- default-ubuntu-1804:     -#    if failed gid "disk" then unmonitor
+I, [2019-04-15T14:28:15.299889 #88807]  INFO -- default-ubuntu-1804:     -#    if space usage > 80% for 5 times within 15 cycles then alert
+I, [2019-04-15T14:28:15.299958 #88807]  INFO -- default-ubuntu-1804:     -#    if space usage > 99% then stop
+I, [2019-04-15T14:28:15.300013 #88807]  INFO -- default-ubuntu-1804:     -#    if inode usage > 30000 then alert
+I, [2019-04-15T14:28:15.300050 #88807]  INFO -- default-ubuntu-1804:     -#    if inode usage > 99% then stop
+I, [2019-04-15T14:28:15.300086 #88807]  INFO -- default-ubuntu-1804:     -#    if read rate > 1 MB/s for 5 cycles then alert
+I, [2019-04-15T14:28:15.300124 #88807]  INFO -- default-ubuntu-1804:     -#    if read rate > 500 operations/s for 5 cycles then alert
+I, [2019-04-15T14:28:15.300161 #88807]  INFO -- default-ubuntu-1804:     -#    if write rate > 1 MB/s for 5 cycles then alert
+I, [2019-04-15T14:28:15.301924 #88807]  INFO -- default-ubuntu-1804:     -#    if write rate > 500 operations/s for 5 cycles then alert
+I, [2019-04-15T14:28:15.302028 #88807]  INFO -- default-ubuntu-1804:     -#    if service time > 10 milliseconds for 3 times within 5 cycles then alert
+I, [2019-04-15T14:28:15.302069 #88807]  INFO -- default-ubuntu-1804:     -#    group server
+I, [2019-04-15T14:28:15.302120 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302155 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302188 #88807]  INFO -- default-ubuntu-1804:     -## Check a file's timestamp. In this example, we test if a file is older
+I, [2019-04-15T14:28:15.302223 #88807]  INFO -- default-ubuntu-1804:     -## than 15 minutes and assume something is wrong if its not updated. Also,
+I, [2019-04-15T14:28:15.302284 #88807]  INFO -- default-ubuntu-1804:     -## if the file size exceed a given limit, execute a script
+I, [2019-04-15T14:28:15.302325 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302361 #88807]  INFO -- default-ubuntu-1804:     -#  check file database with path /data/mydatabase.db
+I, [2019-04-15T14:28:15.302398 #88807]  INFO -- default-ubuntu-1804:     -#    if failed permission 700 then alert
+I, [2019-04-15T14:28:15.302435 #88807]  INFO -- default-ubuntu-1804:     -#    if failed uid "data" then alert
+I, [2019-04-15T14:28:15.302471 #88807]  INFO -- default-ubuntu-1804:     -#    if failed gid "data" then alert
+I, [2019-04-15T14:28:15.302515 #88807]  INFO -- default-ubuntu-1804:     -#    if timestamp > 15 minutes then alert
+I, [2019-04-15T14:28:15.302554 #88807]  INFO -- default-ubuntu-1804:     -#    if size > 100 MB then exec "/my/cleanup/script" as uid dba and gid dba
+I, [2019-04-15T14:28:15.302590 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302627 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302664 #88807]  INFO -- default-ubuntu-1804:     -## Check directory permission, uid and gid.  An event is triggered if the
+I, [2019-04-15T14:28:15.302722 #88807]  INFO -- default-ubuntu-1804:     -## directory does not belong to the user with uid 0 and gid 0.  In addition,
+I, [2019-04-15T14:28:15.302760 #88807]  INFO -- default-ubuntu-1804:     -## the permissions have to match the octal description of 755 (see chmod(1)).
+I, [2019-04-15T14:28:15.302795 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.302865 #88807]  INFO -- default-ubuntu-1804:     -#  check directory bin with path /bin
+I, [2019-04-15T14:28:15.302904 #88807]  INFO -- default-ubuntu-1804:     -#    if failed permission 755 then unmonitor
+I, [2019-04-15T14:28:15.303880 #88807]  INFO -- default-ubuntu-1804:     -#    if failed uid 0 then unmonitor
+I, [2019-04-15T14:28:15.303980 #88807]  INFO -- default-ubuntu-1804:     -#    if failed gid 0 then unmonitor
+I, [2019-04-15T14:28:15.304027 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.304574 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.304737 #88807]  INFO -- default-ubuntu-1804:     -## Check a remote host availability by issuing a ping test and check the
+I, [2019-04-15T14:28:15.304839 #88807]  INFO -- default-ubuntu-1804:     -## content of a response from a web server. Up to three pings are sent and
+I, [2019-04-15T14:28:15.304914 #88807]  INFO -- default-ubuntu-1804:     -## connection to a port and an application level network check is performed.
+I, [2019-04-15T14:28:15.305518 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.305622 #88807]  INFO -- default-ubuntu-1804:     -#  check host myserver with address 192.168.1.1
+I, [2019-04-15T14:28:15.305677 #88807]  INFO -- default-ubuntu-1804:     -#    if failed ping then alert
+I, [2019-04-15T14:28:15.306128 #88807]  INFO -- default-ubuntu-1804:     -#    if failed port 3306 protocol mysql with timeout 15 seconds then alert
+I, [2019-04-15T14:28:15.306230 #88807]  INFO -- default-ubuntu-1804:     -#    if failed port 80 protocol http
+I, [2019-04-15T14:28:15.306376 #88807]  INFO -- default-ubuntu-1804:     -#       and request /some/path with content = "a string"
+I, [2019-04-15T14:28:15.306917 #88807]  INFO -- default-ubuntu-1804:     -#    then alert
+I, [2019-04-15T14:28:15.306999 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.307040 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.307434 #88807]  INFO -- default-ubuntu-1804:     -## Check a network link status (up/down), link capacity changes, saturation
+I, [2019-04-15T14:28:15.307543 #88807]  INFO -- default-ubuntu-1804:     -## and bandwidth usage.
+I, [2019-04-15T14:28:15.307629 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.308012 #88807]  INFO -- default-ubuntu-1804:     -#  check network public with interface eth0
+I, [2019-04-15T14:28:15.308077 #88807]  INFO -- default-ubuntu-1804:     -#    if failed link then alert
+I, [2019-04-15T14:28:15.308118 #88807]  INFO -- default-ubuntu-1804:     -#    if changed link then alert
+I, [2019-04-15T14:28:15.308157 #88807]  INFO -- default-ubuntu-1804:     -#    if saturation > 90% then alert
+I, [2019-04-15T14:28:15.308194 #88807]  INFO -- default-ubuntu-1804:     -#    if download > 10 MB/s then alert
+I, [2019-04-15T14:28:15.308230 #88807]  INFO -- default-ubuntu-1804:     -#    if total uploaded > 1 GB in last hour then alert
+I, [2019-04-15T14:28:15.308266 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.308725 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.308786 #88807]  INFO -- default-ubuntu-1804:     -## Check custom program status output.
+I, [2019-04-15T14:28:15.308826 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.308864 #88807]  INFO -- default-ubuntu-1804:     -#  check program myscript with path /usr/local/bin/myscript.sh
+I, [2019-04-15T14:28:15.308901 #88807]  INFO -- default-ubuntu-1804:     -#    if status != 0 then alert
+I, [2019-04-15T14:28:15.308935 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.308969 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.309443 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.309496 #88807]  INFO -- default-ubuntu-1804:     -## Includes
+I, [2019-04-15T14:28:15.309536 #88807]  INFO -- default-ubuntu-1804:     -###############################################################################
+I, [2019-04-15T14:28:15.309607 #88807]  INFO -- default-ubuntu-1804:     -##
+I, [2019-04-15T14:28:15.309660 #88807]  INFO -- default-ubuntu-1804:     -## It is possible to include additional configuration parts from other files or
+I, [2019-04-15T14:28:15.309696 #88807]  INFO -- default-ubuntu-1804:     -## directories.
+I, [2019-04-15T14:28:15.309731 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.332478 #88807]  INFO -- default-ubuntu-1804:     -   include /etc/monit/conf.d/*
+I, [2019-04-15T14:28:15.332603 #88807]  INFO -- default-ubuntu-1804:     -   include /etc/monit/conf-enabled/*
+I, [2019-04-15T14:28:15.332683 #88807]  INFO -- default-ubuntu-1804:     -#
+I, [2019-04-15T14:28:15.333028 #88807]  INFO -- default-ubuntu-1804:     +set mail-format { 
+I, [2019-04-15T14:28:15.333093 #88807]  INFO -- default-ubuntu-1804:     +  from: monit@f96ae36dd3c7
+I, [2019-04-15T14:28:15.333732 #88807]  INFO -- default-ubuntu-1804:     +  subject: $SERVICE $EVENT
+I, [2019-04-15T14:28:15.333807 #88807]  INFO -- default-ubuntu-1804:     +  message: Monit $ACTION $SERVICE at $DATE on $HOST: $DESCRIPTION.
+I, [2019-04-15T14:28:15.333850 #88807]  INFO -- default-ubuntu-1804:     +Yours sincerely,
+I, [2019-04-15T14:28:15.333887 #88807]  INFO -- default-ubuntu-1804:     +monit
+I, [2019-04-15T14:28:15.333925 #88807]  INFO -- default-ubuntu-1804:     +
+I, [2019-04-15T14:28:15.333961 #88807]  INFO -- default-ubuntu-1804:     +}
+I, [2019-04-15T14:28:15.334514 #88807]  INFO -- default-ubuntu-1804:     +
+I, [2019-04-15T14:28:15.334694 #88807]  INFO -- default-ubuntu-1804:     +set alert notify@example.com NOT ON { action, instance, pid, ppid }
+I, [2019-04-15T14:28:15.334829 #88807]  INFO -- default-ubuntu-1804:     +
+I, [2019-04-15T14:28:15.335194 #88807]  INFO -- default-ubuntu-1804:     +set httpd port 3737
+I, [2019-04-15T14:28:15.335262 #88807]  INFO -- default-ubuntu-1804:     +  use address localhost
+I, [2019-04-15T14:28:15.335310 #88807]  INFO -- default-ubuntu-1804:     +  allow localhost
+I, [2019-04-15T14:28:15.335722 #88807]  INFO -- default-ubuntu-1804:     +
+I, [2019-04-15T14:28:15.335849 #88807]  INFO -- default-ubuntu-1804:     +include /etc/monit/conf.d/*.conf
+I, [2019-04-15T14:28:15.336272 #88807]  INFO -- default-ubuntu-1804:     +
+I, [2019-04-15T14:28:15.336342 #88807]  INFO -- default-ubuntu-1804:     - change mode from '0600' to '0700'
+I, [2019-04-15T14:28:15.448450 #88807]  INFO -- default-ubuntu-1804:   * service[monit] action restart
+I, [2019-04-15T14:28:15.448524 #88807]  INFO -- default-ubuntu-1804:     - restart service service[monit]
+I, [2019-04-15T14:28:15.491444 #88807]  INFO -- default-ubuntu-1804: 
+I, [2019-04-15T14:28:15.491539 #88807]  INFO -- default-ubuntu-1804: Running handlers:
+I, [2019-04-15T14:28:15.492253 #88807]  INFO -- default-ubuntu-1804: Running handlers complete
+I, [2019-04-15T14:28:15.492345 #88807]  INFO -- default-ubuntu-1804: Chef Client finished, 5/7 resources updated in 06 seconds
+I, [2019-04-15T14:28:15.517966 #88807]  INFO -- default-ubuntu-1804: Downloading files from <default-ubuntu-1804>
+I, [2019-04-15T14:28:15.532364 #88807]  INFO -- default-ubuntu-1804: Finished converging <default-ubuntu-1804> (0m54.86s).
+I, [2019-04-15T14:28:15.532575 #88807]  INFO -- default-ubuntu-1804: -----> Setting up <default-ubuntu-1804>...
+I, [2019-04-15T14:28:15.534412 #88807]  INFO -- default-ubuntu-1804: Finished setting up <default-ubuntu-1804> (0m0.00s).
+I, [2019-04-15T14:28:15.534613 #88807]  INFO -- default-ubuntu-1804: -----> Verifying <default-ubuntu-1804>...
+I, [2019-04-15T14:28:15.727060 #88807]  INFO -- default-ubuntu-1804: Loaded tests from {:path=>".Users.monserratsedeno.repos.tl_chef_cookbooks.cookbooks.monit.test.integration"} 
+I, [2019-04-15T14:28:15.857597 #88807]  INFO -- default-ubuntu-1804: Finished verifying <default-ubuntu-1804> (0m0.32s).
+I, [2019-04-15T14:28:15.857748 #88807]  INFO -- default-ubuntu-1804: Finished testing <default-ubuntu-1804> (0m59.91s).
+I, [2019-04-15T14:28:15.858517 #88807]  INFO -- default-ubuntu-1804: -----> Destroying <default-ubuntu-1804>...
+I, [2019-04-15T14:28:16.131655 #88807]  INFO -- default-ubuntu-1804: PID                 USER                TIME                COMMAND
+I, [2019-04-15T14:28:16.132080 #88807]  INFO -- default-ubuntu-1804: 17004               root                0:00                /bin/systemd
+I, [2019-04-15T14:28:16.132170 #88807]  INFO -- default-ubuntu-1804: 17065               root                0:00                /lib/systemd/systemd-journald
+I, [2019-04-15T14:28:16.132332 #88807]  INFO -- default-ubuntu-1804: 17071               102                 0:00                /lib/systemd/systemd-resolved
+I, [2019-04-15T14:28:16.132396 #88807]  INFO -- default-ubuntu-1804: 17073               103                 0:00                /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+I, [2019-04-15T14:28:16.132448 #88807]  INFO -- default-ubuntu-1804: 17076               root                0:00                {networkd-dispat} /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+I, [2019-04-15T14:28:16.132496 #88807]  INFO -- default-ubuntu-1804: 17077               root                0:00                /lib/systemd/systemd-logind
+I, [2019-04-15T14:28:16.132628 #88807]  INFO -- default-ubuntu-1804: 17078               root                0:00                /sbin/agetty -o -p -- \u --noclear tty1 linux
+I, [2019-04-15T14:28:16.132675 #88807]  INFO -- default-ubuntu-1804: 17079               root                0:00                /usr/sbin/sshd -D
+I, [2019-04-15T14:28:16.132721 #88807]  INFO -- default-ubuntu-1804: 17083               root                0:00                sshd: kitchen [priv]
+I, [2019-04-15T14:28:16.132775 #88807]  INFO -- default-ubuntu-1804: 17085               1000                0:00                /lib/systemd/systemd --user
+I, [2019-04-15T14:28:16.132828 #88807]  INFO -- default-ubuntu-1804: 17086               1000                0:00                (sd-pam)
+I, [2019-04-15T14:28:16.132873 #88807]  INFO -- default-ubuntu-1804: 17105               1000                0:00                sshd: kitchen@notty
+I, [2019-04-15T14:28:16.132923 #88807]  INFO -- default-ubuntu-1804: 17107               root                0:00                sshd: kitchen [priv]
+I, [2019-04-15T14:28:16.132969 #88807]  INFO -- default-ubuntu-1804: 17122               1000                0:00                sshd: kitchen@notty
+I, [2019-04-15T14:28:16.133010 #88807]  INFO -- default-ubuntu-1804: 17400               root                0:00                /lib/systemd/systemd-hostnamed
+I, [2019-04-15T14:28:16.133063 #88807]  INFO -- default-ubuntu-1804: 17666               root                0:00                sshd: kitchen [priv]
+I, [2019-04-15T14:28:16.133158 #88807]  INFO -- default-ubuntu-1804: 17681               1000                0:00                sshd: kitchen@notty
+I, [2019-04-15T14:28:16.902160 #88807]  INFO -- default-ubuntu-1804: f96ae36dd3c7e0a14e0b52ef248c20b56dafa44e617b8a96280f9c13ba545354
+I, [2019-04-15T14:28:17.489951 #88807]  INFO -- default-ubuntu-1804: f96ae36dd3c7e0a14e0b52ef248c20b56dafa44e617b8a96280f9c13ba545354
+I, [2019-04-15T14:28:17.506376 #88807]  INFO -- default-ubuntu-1804: Finished destroying <default-ubuntu-1804> (0m1.65s).
