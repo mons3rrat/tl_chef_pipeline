@@ -12,11 +12,11 @@ pipeline {
       steps{
         sh 'foodcritic -B cookbooks/collectd/ || exit 0'
       }
-      post{
+      /*post{
         always {
           warnings canComputeNew: false, canResolveRelativePaths: false, categoriesPattern: '', consoleParsers: [[parserName: 'Foodcritic']], defaultEncoding: '', excludePattern: '', healthy: '100', includePattern: '', messagesPattern: '', unHealthy: ''
         }
-      }
+      }*/
     }
     stage('Rubocop'){
       when { expression{ env.BRANCH_NAME ==~ /dev.*/ || env.BRANCH_NAME ==~ /PR.*/ || env.BRANCH_NAME ==~ /feat.*/ } }
